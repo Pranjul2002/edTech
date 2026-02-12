@@ -1,0 +1,155 @@
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  background-color: #f5f5f5;
+  color: #111; /* Make default text darker */
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+.contact-left {
+  padding: 80px 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: fadeSlide 1s ease forwards;
+  color: #111; /* Ensure strong text visibility */
+}
+
+.contact-title {
+  font-size: 56px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.contact-subtitle {
+  color: #777;
+  margin-bottom: 50px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background: transparent;
+  padding: 10px 5px;
+  font-size: 18px;
+  outline: none;
+  color: #111; /* Typed text color */
+  transition: border-color 0.3s ease;
+}
+
+/* Make placeholder text clearly visible */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #555;
+  opacity: 1;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-bottom: 1px solid #000;
+}
+
+.send-btn {
+  width: fit-content;
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.send-btn:hover {
+  background: #333;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+.contact-info {
+  margin-top: 40px;       /* adds space above, separating from submit button */
+  padding: 20px;          /* inner spacing */
+  background-color: #f5f5f5; /* subtle background to make it stand out */
+  border-radius: 12px;    /* rounded corners for a soft look */
+  text-align: center;     /* center the text */
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  color: #333;            /* readable text color */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* subtle shadow for depth */
+}
+
+.contact-info p {
+  margin: 8px 0; /* spacing between lines */
+}
+
+.contact-info a {
+  color: #0077cc;         /* link color for phone/email */
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-info a:hover {
+  text-decoration: underline; /* hover effect for clarity */
+}
+
+
+.contact-right {
+  background: url("/contactus.png") center/cover no-repeat; 
+  transform: scale(0.5);
+  position: relative;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.05); /* Lighter overlay so text doesn't look faded */
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-right {
+    height: 300px;
+  }
+
+  .contact-left {
+    padding: 60px 30px;
+  }
+}
