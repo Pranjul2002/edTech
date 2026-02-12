@@ -1,66 +1,128 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+
+
+import { useEffect, useRef, useState } from "react";
+import { Gideon_Roman } from 'next/font/google';
+import "./pageStyle.css";
+
+
+
+const gideon = Gideon_Roman({
+  weight: '400',
+  subsets: ['latin'],
+});
+
+
+const text = `Starting is essential for progress.
+____________________________________________________
+"An investment in knowledge always pays the best interest." 
+– Benjamin Franklin"`;
+
+
+const images = [
+  "/landingPage/slide1.png",
+  "/landingPage/slide2.png",
+  "/landingPage/slide3.png",
+  "/landingPage/slide4.png",
+  "/landingPage/slide5.png",
+  "/landingPage/slide6.png",
+  "/landingPage/slide7.png",
+];
 
 export default function Home() {
+
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div id="Home">
+      <div className="bannerArea">
+        <div className="container">
+          <div className={`${gideon.className} bannerTitle`}>
+            An easier, more powerful <br />
+            platform to grow skills
+          </div>
+          <div className="bannerSubTitle">
+            Where Education Blooms Alive.
+          </div>
+        </div>
+      </div>
+
+
+      <div className='carousel'>
+        <div className="carouselTrack">
+          {[...images, ...images].map((src, index) => (
+            <div key={index} className="carouselItem">
+              <img src={src} alt={`slide-${index}`} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+
+
+      <div className="growthMindSetArea">
+        <div className="container">
+          <p className={`${gideon.className} growthText`}>
+            Starting is essential for progress.<br/>
+            _____________________________________________<br/>
+            "An investment in knowledge always pays the<br/> best interest."<br/>
+            – Benjamin Franklin
           </p>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </div>
+
+      <div className="getCourseArea">
+        <div className="getCoursesTitle">
+          <p className={`${gideon.className} getCoursesTitleText`}>
+            Get enrolled in the<br/>
+            courses <br/>
+            made by industry experts!
+          </p>
         </div>
-      </main>
+        <div className="heroWrapper">
+          <div className="container">
+            <div className="courseCard"></div>
+            <div className="courseCard"></div>
+            <div className="courseCard"></div>
+            <div className="courseCard"></div>
+            <div className="courseCard"></div>
+          </div>
+        </div>
+
+        <div className="featuredArea">
+          <div className="container">
+            <div className="ContainerBox">
+              <div className={`${gideon.className} ContainerBoxInside`}>
+                <h1>Make the most of your <br/>
+                time for your enhancement</h1>
+                Focus on driving engagement
+                through personalized, AI-driven, and interactive content,
+                often highlighting improved
+                learning outcomes and efficiency. Key messaging includes,
+                "Transform your classroom with AI-driven, interactive tools designed for
+                personalized learning". Effective communication templates for students include, Reminder.
+              </div>
+              <div className="ContainerBoxInside featuredImg">
+                <img src="/landingPage/featured1.png"></img>
+              </div>
+            </div>
+            <div className="ContainerBox">
+              <div className="ContainerBoxInside featuredImg">
+                <img src="/landingPage/featured2.png"></img>
+              </div>
+              <div className={`${gideon.className} ContainerBoxInside`}>
+                <h1>You can join anytime<br/>
+                from anywhere</h1>
+                Focus on driving engagement
+                through personalized, AI-driven, and interactive content,
+                often highlighting improved
+                learning outcomes and efficiency. Key messaging includes,
+                "Transform your classroom with AI-driven, interactive tools designed for
+                personalized learning". Effective communication templates for students include, Reminder.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
