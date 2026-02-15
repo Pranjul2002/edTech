@@ -1,36 +1,110 @@
-#header{
+#header {
     position: fixed;
+    color: var(--foreground);
+    top: 0;
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding: 15px clamp(20px, 6vw, 120px);
     background-color: #181a1b2a;
     backdrop-filter: blur(15px);
-    z-index: 10;
-}
-#header .logo{
-    padding: 10px;
-    margin-left: 10%;
+    z-index: 1000;
 }
 
-#header .headerMenuItemWrapper{
+/* Logo */
+.logo {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* Menu */
+.headerMenuItemWrapper {
     display: flex;
     list-style: none;
-    padding: 10px;
-    margin-left: auto;
-    margin-right: 8%;
+    gap: 20px;
+    transition: 0.4s ease;
 }
 
-#header .headerMenuItemWrapper .headerMenuItem{
-    padding: 12px;
-    margin: 10px;
+.headerMenuItem {
+    padding: 10px 18px;
     border: 1px solid #181A1B;
     background-color: #181a1b8b;
     backdrop-filter: blur(15px);
-    border-radius: 5px;
-    transition: 800ms;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-#header .headerMenuItemWrapper .headerMenuItem:hover{
+.headerMenuItem:hover {
     border: 1px solid white;
-    border-radius: 5px;
+    transform: translateY(-2px);
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  color: var(--foreground); /* important */
+}
+
+
+.hamburger span {
+  width: 28px;
+  height: 3px;
+  background-color: currentColor;
+  border-radius: 2px;
+}
+
+
+/* Animate hamburger */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+}
+
+/* =========================
+   Mobile Styles
+========================= */
+@media (max-width: 768px) {
+
+    .hamburger {
+        display: flex;
+    }
+
+    .headerMenuItemWrapper {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        background: #181a1be6;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 15px;
+
+        transform: translateY(-200%);
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .headerMenuItemWrapper.show {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .headerMenuItem {
+        width: 80%;
+        text-align: center;
+    }
 }

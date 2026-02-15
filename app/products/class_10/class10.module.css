@@ -7,16 +7,45 @@
   padding: 170px 8% 120px 8%;
   min-height: 100vh;
   font-family: Arial, sans-serif;
-
-  background: linear-gradient(-45deg, #eef2ff, #f8fafc, #e0e7ff, #f1f5f9);
-  background-size: 400% 400%;
-  animation: gradientBG 12s ease infinite;
+  background: #f8fafc;
 }
 
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Symmetric Grid Background */
+.container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 70px 70px;
+  z-index: 0;
+}
+
+/* Left Glow */
+.container::after {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(99,102,241,0.12), transparent 70%);
+  top: 50%;
+  left: -250px;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+/* Right Glow */
+.cardGrid::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(99,102,241,0.12), transparent 70%);
+  top: 50%;
+  right: -250px;
+  transform: translateY(-50%);
+  z-index: 0;
 }
 
 /* =========================
@@ -53,7 +82,7 @@
 }
 
 /* =========================
-   Octagon Base Card
+   Rectangle Card
 ========================= */
 .card {
   width: 100%;
@@ -62,34 +91,20 @@
   text-align: center;
   position: relative;
   transition: all 0.4s ease;
-
-  clip-path: polygon(
-    30% 0%,
-    70% 0%,
-    100% 30%,
-    100% 70%,
-    70% 100%,
-    30% 100%,
-    0% 70%,
-    0% 30%
-  );
-
+  border-radius: 20px;
   background: white;
   border: 1px solid rgba(0, 0, 0, 0.15);
   transform-style: preserve-3d;
   perspective: 1000px;
 }
 
-/* =========================
-   Neon Border Animation
-========================= */
+/* Glow Border Animation */
 .card::before {
   content: "";
   position: absolute;
   inset: -4px;
-  clip-path: inherit;
+  border-radius: 24px;
   z-index: -1;
-  border-radius: 20px;
   opacity: 0.7;
   animation: pulseGlow 2.5s infinite alternate;
 }
@@ -99,9 +114,7 @@
   to { opacity: 1; }
 }
 
-/* =========================
-   Subject Glow Colors
-========================= */
+/* Subject Glow Colors */
 .physics::before {
   background: radial-gradient(circle, #b7d0f8, transparent 70%);
 }
@@ -118,9 +131,7 @@
   background: radial-gradient(circle, #f0e2fc, transparent 70%);
 }
 
-/* =========================
-   Hover 3D Pop
-========================= */
+/* Hover 3D Effect */
 .card:hover {
   transform: rotateX(6deg) rotateY(-6deg) scale(1.07);
 }
@@ -160,50 +171,6 @@
 .button:hover {
   background: #000;
   transform: translateY(-4px);
-}
-
-/* =========================
-   Floating Blobs
-========================= */
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.3;
-  animation: float 18s infinite ease-in-out;
-  z-index: 0;
-}
-
-.blob1 {
-  width: 400px;
-  height: 400px;
-  background: #6366f1;
-  top: 10%;
-  left: -120px;
-}
-
-.blob2 {
-  width: 350px;
-  height: 350px;
-  background: #4f46e5;
-  bottom: 5%;
-  right: -100px;
-  animation-delay: 6s;
-}
-
-.blob3 {
-  width: 300px;
-  height: 300px;
-  background: #818cf8;
-  top: 40%;
-  right: 30%;
-  animation-delay: 3s;
-}
-
-@keyframes float {
-  0% { transform: translateY(0px) translateX(0px); }
-  50% { transform: translateY(-40px) translateX(30px); }
-  100% { transform: translateY(0px) translateX(0px); }
 }
 
 /* =========================
